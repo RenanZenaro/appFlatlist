@@ -1,0 +1,4 @@
+Configuração do Git local
+
+git config --global user.name RenanZenaro
+git config --global user.email renanzenaro@hotmail.com
