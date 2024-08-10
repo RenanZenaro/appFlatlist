@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
-import {List} from 'react-native-paper';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
+import { List } from 'react-native-paper';
 
 const DATA = [
   {
@@ -20,11 +20,15 @@ const DATA = [
   },
 ];
 
-const Item = ({title}) => (
+const Item = ({ elemento: item }) => (
   <List.Item
-    title={title.titulo}
-    description={title.descricao}
-    left={props => <List.Icon {...props} icon="folder" />}
+    title={item.titulo}
+    description={item.descricao}
+    // left={props => <List.Icon {...props} icon="folder" />}
+    left={props => 
+      <Image {...props} style={styles.tinylogo} 
+      source={{ uri: 'https://cdn.pixabay.com/photo/2016/06/22/16/47/guitar-1473417_640.png'}} />
+    }
   />
 );
 
@@ -33,7 +37,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={DATA}
-        renderItem={({item}) => <Item title={item} />}
+        renderItem={({ item }) => <Item elemento={item} />}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
@@ -54,6 +58,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
+  tinylogo: {
+    width: 50,
+    height: 50
+  }
 });
 
 export default App;
